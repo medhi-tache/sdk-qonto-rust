@@ -94,7 +94,6 @@ impl QontoClient {
     }
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;

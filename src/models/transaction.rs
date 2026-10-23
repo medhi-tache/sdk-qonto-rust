@@ -31,7 +31,6 @@ pub struct Transaction {
     pub status: Option<String>,
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;

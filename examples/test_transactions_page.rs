@@ -1,4 +1,3 @@
-
 use sdk_qonto_v2::{QontoClient, QontoConfig};
 
 #[tokio::main]
@@ -17,19 +16,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     };
 
     // Teste la première page avec 10 transactions maximum.
-    let result = client
-        .list_transactions_page(&account.id, 1, 10)
-        .await?;
+    let result = client.list_transactions_page(&account.id, 1, 10).await?;
 
     println!("Requête réussie.");
     println!(
         "Page : {} / {}",
-        result.pagination.current_page,
-        result.pagination.total_pages
+        result.pagination.current_page, result.pagination.total_pages
     );
     println!("Taille de page : {}", result.pagination.per_page);
-    println!("Nombre total de transactions : {}", result.pagination.total_count);
-    println!("Transactions reçues sur cette page : {}", result.transactions.len());
+    println!(
+        "Nombre total de transactions : {}",
+        result.pagination.total_count
+    );
+    println!(
+        "Transactions reçues sur cette page : {}",
+        result.transactions.len()
+    );
     println!(
         "Page suivante disponible : {}",
         result.pagination.next_page.is_some()
@@ -40,7 +42,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     if let Some(transaction) = result.transactions.first() {
         println!("Champs du modèle Transaction disponibles :");
         println!("  id : {}", transaction.id.is_some());
-        println!("  transaction_id : {}", transaction.transaction_id.is_some());
+        println!(
+            "  transaction_id : {}",
+            transaction.transaction_id.is_some()
+        );
         println!("  label : {}", transaction.label.is_some());
         println!("  amount_cents : {}", transaction.amount_cents.is_some());
         println!("  currency : {}", transaction.currency.is_some());

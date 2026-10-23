@@ -49,7 +49,6 @@ pub struct Account {
     pub updated_at: Option<String>,
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
