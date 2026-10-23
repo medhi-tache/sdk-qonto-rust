@@ -1,0 +1,27 @@
+
+[package]
+name = "sdk-qonto-v2"
+version = "0.1.0"
+edition = "2024"
+description = "SDK Rust pour l'API Qonto"
+license = "MIT"
+
+[dependencies]
+# Client HTTP asynchrone et prise en charge de JSON avec TLS Rustls.
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+
+# Exécution asynchrone et macro #[tokio::main].
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+# Sérialisation et désérialisation des structures Rust.
+serde = { version = "1", features = ["derive"] }
+
+# Manipulation de valeurs JSON et désérialisation de réponses.
+serde_json = "1"
+
+# Définition d'erreurs personnalisées.
+thiserror = "2"
+
+[dev-dependencies]
+wiremock = "0.6"
+dotenvy = "0.15"
